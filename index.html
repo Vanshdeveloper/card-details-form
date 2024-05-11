@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Interactive card details form</title>
+
+</head>
+
+<body>
+
+    <main>
+        <div class="wrapper">
+
+            <div class="col-1">
+
+                <!-- Front Card -->
+
+                <div class="front-card">
+                    <div class="card-logo">
+                        <img src="images/card-logo.svg" alt="card-logo">
+                    </div>
+
+                    <div class="user-details">
+                        <div class="card-numbers">
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                            <p class="card-num">0</p>
+                        </div>
+
+                        <div class="inf">
+                            <div class="card-owner-name">
+                                <p class="sample-card-name" id="cardHolderName">Jane Appleseed</p>
+                            </div>
+
+                            <div class="exp-date">
+                                <p class="month">00</p>
+                                <p>/</p>
+                                <p class="year">00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back Card -->
+
+                <div class="back-card">
+                    <div class="cvv-div">
+                        <p class="cvv">0</p>
+                        <p class="cvv">0</p>
+                        <p class="cvv">0</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-2">
+                <form class="form" style="display: flex; flex-direction: column;">
+                    <div class="cardholder">
+                        <label for="cardholder">
+                            <p>Cardholder Name</p>
+                        </label>
+
+                        <input type="text" name="cardholder" id="cardholder" oninput="writeHolderName(this)"
+                            placeholder="e.g. Jane Appleseed">
+
+                        <div class="name-error-msg"
+                            style="visibility: hidden; color: var(--Red); font-family: var(--font); font-weight: 600;">
+                            Invalid value</div>
+                    </div>
+
+                    <div class="cardnumber">
+                        <label for="cardnumber">
+                            <p>Card number</p>
+                        </label>
+                        <input type="number" name="cardnumber" id="cardnumber" placeholder="e.g. 1234 5678 9123 0000"
+                            oninput="limitLength(this), cardNumUpdate(this)">
+                        <div class="cardnumber-error-msg"
+                            style="visibility: hidden; color: var(--Red); font-family: var(--font); font-weight: 600;">
+                            Invalid value</div>
+                    </div>
+
+
+                    <div class="date-info">
+
+                        <div class="fr-valid-date">
+
+                            <label for="fr-valid-date-inp">
+                                <p>exp. date [MM/YY]</p>
+                            </label>
+
+                            <div class="date-inps">
+                                <input type="number" name="month" id="fr-valid-month"
+                                    oninput="validateMonth(this), writeMonth(this)" placeholder="MM">
+                                <input type="number" name="year" id="fr-valid-year" oninput="writeYear(this)"
+                                    placeholder="YY">
+                            </div>
+                            <div class="date-error-msg"
+                                style="visibility: hidden; color: var(--Red); font-family: var(--font); font-weight: 600;">
+                                Invalid value</div>
+
+                        </div>
+
+                        <div class="fr-cl-cvv">
+                            <label for="fr-cvv">
+                                <p>CVV</p>
+                            </label>
+                            <input type="number" name="cvv" id="fr-cvv" oninput="writeCVV(this)" placeholder="CVV">
+                            <div class="cvv-error-msg"
+                                style="visibility: hidden; color: var(--Red); font-family: var(--font); font-weight: 600;">
+                                Invalid value</div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="submit-btn">
+                        <button id="submit-btn" onclick="checkInput(event)">Confirm</button>
+                    </div>
+
+                </form>
+
+                <div class="success_msg">
+                    <div class="tick">
+                        <img src="images/icon-complete.svg" alt="tick image">
+                    </div>
+
+                    <div class="tq-msg">
+                        <h2>Thank you!</h2>
+                        <p>We've added your card details</p>
+                    </div>
+
+                    <div class="continue_btn">
+                        <button onclick="successClose()">Continue</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        function limitLength(input) {
+            if (input.value.length > 16) {
+                input.value = input.value.slice(0, 16);
+            }
+        }
+
+        function validateMonth(input) {
+            if (input.value > 12) {
+                let month = document.getElementById('fr-valid-month').value;
+                input.value = 12;
+                alert(month + " is invalid value." + " Please select value between 12")
+            }
+        }
+
+        function writeHolderName(input) {
+            let card_holder_Val = document.getElementById('cardholder').value;
+            let cardHolderVal = document.getElementById('cardHolderVal');
+            cardHolderName.innerText = card_holder_Val;
+        }
+
+        function cardNumUpdate(input) {
+            let cardNumber = document.getElementById('cardnumber').value;
+            let card_num = document.querySelectorAll('.card-num');
+
+            card_num.forEach(function (element, index) {
+                element.innerText = cardNumber[index] || '0';
+            });
+        }
+
+        function writeMonth(input) {
+            let month = document.getElementById('fr-valid-month').value;
+            console.log(typeof (month))
+            let card_month = document.querySelector('.month')
+            card_month.innerText = month;
+
+            if (month < 10) {
+                card_month.innerText = "0" + month;
+            }
+
+            if (month === "0") {
+                alert("month can't be zero")
+                month = "1"
+                return
+            }
+        }
+
+        function writeYear(input) {
+            let year = document.getElementById('fr-valid-year').value;
+            let card_year = document.querySelector('.year')
+            if (year.length > 2) {
+                alert("can't be more than 2-digits")
+            }
+            card_year.innerText = year;
+        }
+
+        function writeCVV(input) {
+            let cvvVal = document.getElementById('fr-cvv').value;
+            let cvv = document.querySelectorAll('.cvv')
+
+            cvv.forEach(function (element, index) {
+                element.innerText = cvvVal[index] || '0';
+            })
+        }
+
+        function checkInput(event) {
+            let card_holder_Val = document.getElementById('cardholder').value;
+            let cvvVal = document.getElementById('fr-cvv').value;
+            let month = document.getElementById('fr-valid-month').value;
+            let year = document.getElementById('fr-valid-year').value;
+            let cardNumber = document.getElementById('cardnumber').value;
+            let name_card_error = document.querySelector('.name-error-msg');
+            let cardnumber_error = document.querySelector('.cardnumber-error-msg')
+            let date_error = document.querySelector('.date-error-msg')
+            let cvv_error = document.querySelector('.cvv-error-msg')
+
+            let hasError = false;
+
+            if (card_holder_Val === "") {
+                name_card_error.style.visibility = 'visible';
+                hasError = true;
+            } else {
+                name_card_error.style.visibility = 'hidden';
+            }
+
+            if (cardNumber === "") {
+                cardnumber_error.style.visibility = 'visible';
+                hasError = true;
+            } else {
+                cardnumber_error.style.visibility = 'hidden';
+            }
+
+            if (month === "" || month < 1 || month > 12) {
+                date_error.style.visibility = 'visible';
+                hasError = true;
+            } else {
+                date_error.style.visibility = 'hidden';
+            }
+
+            if (year === "" || year.length !== 2) {
+                date_error.style.visibility = 'visible';
+                hasError = true;
+            } else {
+                date_error.style.visibility = 'hidden';
+            }
+
+            if (cvvVal === "" || cvvVal.length !== 3) {
+                cvv_error.style.visibility = 'visible';
+                hasError = true;
+            } else {
+                cvv_error.style.visibility = 'hidden';
+            }
+
+            if (!hasError) {
+                let form = document.querySelector('.form');
+                let success_msg = document.querySelector('.success_msg');
+                success_msg.style.display = 'flex';
+                form.style.display = 'none';
+                event.preventDefault();
+            }
+
+            if (hasError) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        }
+
+        function resetCardDetails() {
+            // Reset card number
+            let cardNumbers = document.querySelectorAll('.card-num');
+            cardNumbers.forEach(function (element) {
+                element.innerText = '0';
+            });
+
+            // Reset cardholder name
+            let cardHolderName = document.querySelector('.sample-card-name');
+            cardHolderName.innerText = 'Jane Appleseed';
+
+            // Reset expiration date
+            let cardMonth = document.querySelector('.month');
+            cardMonth.innerText = '00';
+            let cardYear = document.querySelector('.year');
+            cardYear.innerText = '00';
+
+            // Reset CVV
+            let cvvNumbers = document.querySelectorAll('.cvv');
+            cvvNumbers.forEach(function (element) {
+                element.innerText = '0';
+            });
+        }
+
+        function successClose() {
+            let form = document.querySelector('.form');
+            let success_msg = document.querySelector('.success_msg');
+            let formFields = form.querySelectorAll('input'); // Get all input fields in the form
+
+            formFields.forEach(function (field) {
+                field.value = ''; // Reset the value to an empty string
+            });
+
+            success_msg.style.display = 'none';
+            form.style.display = 'flex';
+            resetCardDetails();
+        }
+
+    </script>
+
+</body>
+
+</html>
