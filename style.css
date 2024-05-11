@@ -1,0 +1,412 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font: "Space Grotesk", sans-serif;
+    --White: hsl(0, 0%, 100%);
+    --Lightgrayishviolet: hsl(270, 3%, 87%);
+    --Darkgrayishviolet: hsl(279, 6%, 55%);
+    --Verydarkviolet: hsl(278, 68%, 11%);
+    --Red: hsl(0, 100%, 66%);
+}
+
+main {
+    display: flex;
+    /* align-items: center; */
+    /* flex-direction: column; */
+}
+
+main .wrapper {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+
+
+/* col-1 start */
+
+
+.wrapper .col-1 {
+    height: 100%;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url(images/bg-main-desktop.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    gap: 30px;
+}
+
+
+
+
+/* Front Card Design */
+
+
+
+
+.wrapper .col-1 .front-card {
+    transform: translateX(100px);
+    box-shadow: 0 10px 2780px hsl(279, 6%, 55%);
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background: url(images/bg-card-front.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.wrapper .col-1 .front-card .card-logo img {
+    width: 50px;
+}
+
+.wrapper .col-1 .front-card .user-details .card-numbers {
+    padding: 40px 0 0 0;
+    font-family: var(--font);
+    color: var(--White);
+    display: flex;
+}
+
+.wrapper .col-1 .front-card .user-details .card-num:nth-child(4n) {
+    padding-right: 20px;
+}
+
+.wrapper .col-1 .front-card .inf {
+    padding: 15px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper .col-1 .front-card .user-details .card-owner-name {
+    display: flex;
+}
+
+.wrapper .col-1 .front-card .user-details .card-owner-name p {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--White);
+    font-family: var(--font);
+}
+
+.wrapper .col-1 .front-card .user-details .exp-date {
+    display: flex;
+}
+
+.wrapper .col-1 .front-card .user-details .exp-date p {
+    font-size: 15px;
+    color: var(--White);
+    font-family: var(--font);
+}
+
+
+
+
+/* Back card design */
+
+
+
+.wrapper .col-1 .back-card {
+    transform: translateX(160px);
+    box-shadow: 0 10px 2780px hsl(279, 6%, 55%);
+    height: 160px;
+    width: 270px;
+    background: url(images/bg-card-back.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.wrapper .col-1 .back-card .cvv-div {
+    display: flex;
+    padding: 0 25px 0 0;
+}
+
+.wrapper .col-1 .back-card .cvv-div p {
+    font-family: var(--font);
+    color: var(--White);
+    font-size: 12px;
+}
+
+/* col-1 Finish */
+
+
+/* Col-2 start */
+
+
+.col-2 {
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-2 form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.col-2 form .cardholder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.col-2 form .cardholder label {
+    color: var(--Verydarkviolet);
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.col-2 form .cardholder input {
+    padding: 10px;
+    height: 50px;
+    width: 380px;
+    font-family: var(--font);
+    font-size: 15px;
+    border: 2px solid hsl(270, 3%, 87%);
+    border-radius: 10px;
+}
+
+
+.col-2 form .cardnumber {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.col-2 form .cardnumber label {
+    color: var(--Verydarkviolet);
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.col-2 form .cardnumber input {
+    padding: 10px;
+    height: 50px;
+    width: 380px;
+    font-family: var(--font);
+    font-size: 15px;
+    border: 2px solid hsl(270, 3%, 87%);
+    border-radius: 10px;
+}
+
+
+.col-2 form .date-info {
+    display: flex;
+    gap: 20px;
+}
+
+.col-2 form .date-info .fr-valid-date {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.col-2 form .date-info .fr-valid-date label {
+    color: var(--Verydarkviolet);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.col-2 form .date-info .fr-valid-date .date-inps {
+    display: flex;
+    gap: 10px;
+}
+
+.col-2 form .date-info .fr-valid-date .date-inps input{
+    padding: 10px;
+    height: 50px;
+    width: 70px;
+    font-family: var(--font);
+    font-size: 15px;
+    border: 2px solid hsl(270, 3%, 87%);
+    border-radius: 10px;
+}
+
+.col-2 form .date-info .fr-cl-cvv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.col-2 form .date-info .fr-cl-cvv label {
+    font-family: var(--font);
+    color: var(--Verydarkviolet);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.col-2 form .date-info .fr-cl-cvv input{
+    padding: 10px;
+    height: 50px;
+    width: 100%;
+    font-family: var(--font);
+    font-size: 15px;
+    border: 2px solid hsl(270, 3%, 87%);
+    border-radius: 10px;
+}
+
+.col-2 form .submit-btn button {
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: var(--Verydarkviolet);
+    color: var(--White);
+    font-family: var(--font);
+    font-size: 16px;
+}
+
+.col-2 .success_msg {
+    transition: .30s;
+    font-family: var(--font);
+    display: none;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.col-2 .success_msg .tq-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.col-2 .success_msg .tq-msg h2 {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+}
+
+.col-2 .success_msg .continue_btn button{
+    margin: 0 0 20px 0;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    border: none;
+    background: var(--Verydarkviolet);
+    color: var(--White);
+    font-family: var(--font);
+    font-size: 16px;
+}
+
+@media (max-width: 1230px) {
+    main .col-1 {
+        height: 100vh;
+        width: 380px;
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wrapper .col-1 .front-card {
+        transform: translateX(0px);
+    }
+
+    .wrapper .col-1 .back-card {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 840px) {
+    .col-2 form .cardholder input {
+        padding: 10px;
+        height: 50px;
+        width: 270px;
+        font-family: var(--font);
+        font-size: 15px;
+        border: 2px solid hsl(270, 3%, 87%);
+        border-radius: 10px;
+    }
+
+    .col-2 form .cardnumber input {
+        padding: 10px;
+        height: 50px;
+        width: 270px;
+        font-family: var(--font);
+        font-size: 15px;
+        border: 2px solid hsl(270, 3%, 87%);
+        border-radius: 10px;
+    }
+
+    .col-2 form .date-info .fr-valid-date .date-inps input{
+        padding: 10px;
+        height: 50px;
+        width: 70px;
+        font-family: var(--font);
+        font-size: 15px;
+        border: 2px solid hsl(270, 3%, 87%);
+        border-radius: 10px;
+    }
+
+    .col-2 form .date-info .fr-cl-cvv input{
+        padding: 10px;
+        height: 50px;
+        width: 100px;
+        font-family: var(--font);
+        font-size: 15px;
+        border: 2px solid hsl(270, 3%, 87%);
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 705px) {
+    main .wrapper {
+        flex-direction: column;
+    }
+
+    .wrapper .col-1 {
+        width: 100%;
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .wrapper .col-2 {
+        margin: 20px 0 0 0;
+    }
+
+    .col-2 form .submit-btn button {
+        margin: 0 0 20px 0;
+    }
+}
+
+
+@media (max-width: 426px) {
+    .wrapper .col-1 .back-card {
+        height: 160px;
+        width: 270px;
+    }
+
+    .wrapper .col-1 .front-card {
+        height: 160px;
+        z-index: 999;
+    }
+}
